@@ -1,0 +1,49 @@
+{
+  "platform": "NETSECUREPRO",
+  "version": "V6.1-1LINE-SA",
+  "exported_at": "2026-10-01T12:40:38.833038+00:00",
+  "events": [
+    {
+      "ts": "2026-10-01T12:40:38.831954+00:00",
+      "a": "LOAD_MODULE",
+      "s": "200_OK_INFERENCE_READY",
+      "mod": "INFERENCE_CORE",
+      "h": "37365eaba299794f"
+    },
+    {
+      "ts": "2026-10-01T12:40:38.832558+00:00",
+      "a": "LOAD_MODULE",
+      "s": "200_OK_INFERENCE_READY",
+      "mod": "BUS_DIRECT",
+      "h": "082dfc8225779704"
+    },
+    {
+      "ts": "2026-10-01T12:40:38.832644+00:00",
+      "a": "LOAD_MODULE",
+      "s": "200_OK_INFERENCE_READY",
+      "mod": "PREUVE_LOI25",
+      "h": "e513ddf8c7fc1d71"
+    },
+    {
+      "ts": "2026-10-01T12:40:38.832681+00:00",
+      "a": "LOAD_MODULE",
+      "s": "200_OK_INFERENCE_READY",
+      "mod": "ZERO_TRUST_GATE",
+      "h": "be851aa0e173a410"
+    },
+    {
+      "ts": "2026-10-01T12:40:38.832710+00:00",
+      "a": "LOAD_MODULE",
+      "s": "200_OK_INFERENCE_READY",
+      "mod": "LOGICLASS_AI23",
+      "h": "1bf4e4ada151d3a2"
+    },
+    {
+      "ts": "2026-10-01T12:40:38.832740+00:00",
+      "a": "LOAD_MODULE",
+      "s": "200_OK_INFERENCE_READY",
+      "mod": "DASHBOARD_LIVE",
+      "h": "8dce5a03b44b2b0e"
+    }
+  ]
+}
