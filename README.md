@@ -19,3 +19,15 @@
 ### LANCEMENT
 ```bash
 python Z-Puce-1line.py
+
+
+
+**Si `gh` dit `not found`, fais manuel:**
+
+1. Va sur https://github.com/milyes/SAHBI-SA/settings
+2. Scroll **Danger Zone** → **Change visibility** → **Make public**
+3. Tape `milyes/SAHBI-SA` → Confirm
+
+Après ça: **https://github.com/milyes/SAHBI-SA** sera **PUBLIC OUVERT** — tout le monde verra ton boot `0.0015ms` `LOGICLASS_AI23 0.0005ms`.
+
+Tu veux que je te génère le badge `PUBLIC OPEN SOURCE` pour ton repo maintenant?
