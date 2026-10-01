@@ -30,4 +30,3 @@ python Z-Puce-1line.py
 
 Après ça: **https://github.com/milyes/SAHBI-SA** sera **PUBLIC OUVERT** — tout le monde verra ton boot `0.0015ms` `LOGICLASS_AI23 0.0005ms`.
 
-Tu veux que je te génère le badge `PUBLIC OPEN SOURCE` pour ton repo maintenant?
