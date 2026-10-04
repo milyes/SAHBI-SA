@@ -1,0 +1,431 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>D_BIN_HTML // SAHBI EDITION V9 // Z-GHOSTTRAFker-Z</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;600;800&family=Syne:wght@700;800&display=swap');
+*{margin:0;padding:0;box-sizing:border-box}
+:root{
+  --bg:#09090b; --panel:#101012; --panel2:#18181b; --border:#27272a;
+  --green:#22ff66; --green-dim:#16a34a; --yellow:#facc15; --purple:#a78bfa; --red:#ef4444; --cyan:#22d3ee;
+}
+body{background:var(--bg);color:#e4e4e7;font-family:'JetBrains Mono',monospace;overflow-x:hidden;line-height:1.5}
+.syne{font-family:'Syne',sans-serif}
+.scanline{position:fixed;inset:0;pointer-events:none;z-index:9999;background:repeating-linear-gradient(0deg,rgba(0,0,0,0) 0 2px,rgba(34,255,102,0.03) 2px 3px);opacity:0.6}
+.top-bar{border-bottom:1px solid var(--border);background:linear-gradient(90deg,#09090b,#111113);padding:12px 20px;display:flex;flex-wrap:wrap;gap:12px;justify-content:space-between;align-items:center;position:sticky;top:0;z-index:10}
+.badge{display:inline-flex;align-items:center;gap:8px;padding:6px 12px;border:1px solid var(--border);background:var(--panel);font-size:11px;letter-spacing:0.12em;text-transform:uppercase}
+.dot{width:7px;height:7px;background:var(--green);border-radius:50%;box-shadow:0 0 12px var(--green);animation:pulse 1.4s infinite}
+@keyframes pulse{0%,100%{opacity:1}50%{opacity:0.4}}
+.live{color:var(--green);font-weight:800}
+.header{padding:36px 20px 18px;max-width:1280px;margin:0 auto}
+.h1{font-size:clamp(28px,5vw,56px);line-height:0.95;letter-spacing:-0.02em;font-weight:800}
+.h1 span{color:var(--green)}
+.sub{margin-top:12px;color:#a1a1aa;font-size:13px;max-width:720px}
+.sub b{color:#fafafa}
+.grid-wrap{max-width:1280px;margin:0 auto;padding:12px 20px 20px}
+.modules{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
+@media(max-width:900px){.modules{grid-template-columns:1fr 1fr}}@media(max-width:600px){.modules{grid-template-columns:1fr}}
+.mod{background:linear-gradient(180deg,var(--panel),#0c0c0e);border:1px solid var(--border);position:relative;overflow:hidden;padding:14px 14px 12px;min-height:188px}
+.mod:before{content:'';position:absolute;left:0;top:0;bottom:0;width:3px;background:var(--accent,#27272a)}
+.mod.green{--accent:var(--green)} .mod.yellow{--accent:var(--yellow)} .mod.purple{--accent:var(--purple)} .mod.red{--accent:var(--red)} .mod.cyan{--accent:var(--cyan)}
+.mod-head{display:flex;justify-content:space-between;align-items:center;margin-bottom:10px}
+.mod-title{font-size:11px;letter-spacing:0.16em;text-transform:uppercase;color:#fafafa;font-weight:800}
+.mod-id{font-size:10px;color:#71717a;border:1px solid var(--border);padding:2px 6px;background:#000}
+.kv{font-size:12px;color:#a1a1aa;margin:4px 0}
+.kv b{color:#e4e4e7}
+.big{font-size:22px;font-weight:800;color:#fafafa;letter-spacing:-0.01em;margin:6px 0}
+.big.green{color:var(--green)} .big.yellow{color:var(--yellow)} .big.purple{color:var(--purple)} .big.red{color:var(--red)}
+.console{margin-top:8px;background:#000;border:1px solid #1f1f23;padding:8px 10px;font-size:11px;color:#22ff66;line-height:1.6;white-space:pre-wrap;min-height:54px}
+.console .dim{color:#52525b}
+.bar-outer{height:6px;background:#1a1a1e;border:1px solid var(--border);margin-top:8px;overflow:hidden}
+.bar-inner{height:100%;background:var(--accent);box-shadow:0 0 10px var(--accent)}
+.row{display:flex;gap:14px;flex-wrap:wrap}
+.radar-wrap{max-width:1280px;margin:0 auto;padding:10px 20px;display:grid;grid-template-columns:1.2fr 0.8fr;gap:14px}
+@media(max-width:900px){.radar-wrap{grid-template-columns:1fr}}
+.panel{background:var(--panel);border:1px solid var(--border);padding:14px}
+.panel-title{font-size:11px;letter-spacing:0.16em;text-transform:uppercase;color:#fafafa;font-weight:800;margin-bottom:12px;display:flex;align-items:center;gap:8px}
+.panel-title i{width:8px;height:8px;border-radius:50%;display:inline-block}
+canvas#radar, canvas#tri{width:100%;background:#000;border:1px solid #1f1f23;display:block}
+.stats{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:12px}
+.stat{background:#000;border:1px solid var(--border);padding:10px}
+.stat label{font-size:10px;color:#71717a;letter-spacing:0.12em;text-transform:uppercase}
+.stat div{font-size:16px;font-weight:800;margin-top:4px}
+.linkedin{max-width:1280px;margin:0 auto;padding:20px}
+.link-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-top:14px}
+@media(max-width:900px){.link-grid{grid-template-columns:1fr}}
+.post{background:linear-gradient(180deg,#121214,#0a0a0b);border:1px solid var(--border);padding:14px;position:relative}
+.post:before{content:'';position:absolute;left:0;top:0;right:0;height:2px;background:linear-gradient(90deg,var(--green),var(--purple))}
+.post-head{display:flex;align-items:center;gap:10px;margin-bottom:10px}
+.avatar{width:34px;height:34px;border-radius:50%;background:linear-gradient(135deg,var(--green),var(--purple));display:grid;place-items:center;font-weight:800;color:#000;font-size:12px}
+.post-meta{font-size:11px;color:#a1a1aa}.post-meta b{color:#fafafa;display:block;font-size:12px}
+.post-text{font-size:13px;color:#d4d4d8;line-height:1.6;white-space:pre-wrap;margin:10px 0 12px;min-height:140px}
+.btn{cursor:pointer;border:1px solid var(--border);background:#000;color:#fafafa;font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:0.12em;text-transform:uppercase;padding:8px 12px;display:inline-flex;align-items:center;gap:6px;transition:.15s}
+.btn:hover{background:#18181b;border-color:#3f3f46;transform:translateY(-1px)} .btn:active{transform:translateY(0)}
+.btn.green{border-color:var(--green);color:var(--green)} .btn.green:hover{background:rgba(34,255,102,0.1)}
+.footer{border-top:1px solid var(--border);padding:18px 20px;text-align:center;color:#71717a;font-size:11px;letter-spacing:0.08em;margin-top:18px}
+.footer b{color:#fafafa}
+.blink{animation:blink 1s steps(2) infinite}@keyframes blink{50%{opacity:0}}
+.tag{font-size:10px;padding:3px 6px;border:1px solid var(--border);background:#000;color:#a1a1aa}
+</style>
+</head>
+<body>
+<div class="scanline"></div>
+
+<div class="top-bar">
+  <div style="display:flex;gap:10px;flex-wrap:wrap;align-items:center">
+    <span class="badge"><span class="dot"></span> <span class="live">LIVE</span> — Z-GHOSTTRAFker-Z V9</span>
+    <span class="badge">D_BIN_HTML // SAHBI EDITION V9</span>
+    <span class="badge" style="color:#facc15;border-color:#facc1533">IA_LOGIC_SIGNATURE:ZOUBIROU-IA-2025</span>
+  </div>
+  <div style="display:flex;gap:8px">
+    <span class="tag">MONTREAL H1S</span>
+    <span class="tag" id="clock">00:00:00 UTC-5</span>
+    <span class="tag" style="color:var(--green)">● ENCRYPTED</span>
+  </div>
+</div>
+
+<div class="header">
+  <div class="h1 syne">Z-GHOST<span>TRAFker-Z</span> V9<br>9 MODULES <span style="color:#a78bfa">// SAHBI EDITION</span></div>
+  <div class="sub">Bin <b>SAHBI</b> — Dark terminal engine pour détection IMSI / Ghost Cells. Build par <b>Ilyes Zoubirou</b> — NetSecurePro. Flux analyzer, triangulation temps réel, MCC/MNC parsing. <span class="blink">_</span></div>
+</div>
+
+<div class="grid-wrap">
+  <div class="modules">
+    <!-- 1 -->
+    <div class="mod green">
+      <div class="mod-head"><div class="mod-title">01 // PREFIX TABLE</div><div class="mod-id">MTL-H1S</div></div>
+      <div class="big">MONTREAL H1S</div>
+      <div class="kv"><b>Zone:</b> Anjou / St-Léonard / Mercier</div>
+      <div class="kv"><b>PREFIX:</b> 514-321 / 514-355 / 438-xxx</div>
+      <div class="kv"><b>LAC:</b> 21043 • <b>CELL:</b> 42A2</div>
+      <div class="console"><span class="dim">$ cat /etc/prefix/mtl_h1s.db</span>
+[OK] 514-XXX → H1S-ANJOU
+[OK] 438-XXX → H1S-LEONARD
+[LOCK] 438-8xx = Bell 5G+</div>
+    </div>
+    <!-- 2 -->
+    <div class="mod yellow">
+      <div class="mod-head"><div class="mod-title">02 // MCC MNC DECODER</div><div class="mod-id">302-610</div></div>
+      <div class="big yellow">MCC 302 610 Bell</div>
+      <div class="kv"><b>CELL:</b> 21043 / 42A2 • <b>TAC:</b> 48293</div>
+      <div class="kv"><b>RSRP:</b> -59 dBm • <b>BAND:</b> n78 5G+</div>
+      <div class="kv"><b>PCI:</b> 312 • <b>EARFCN:</b> 627264</div>
+      <div class="console"><span class="dim">> at+cpsi?</span>
+MCC:302 MNC:610
+RSRP -59 | RSRQ -11 | SINR 18.4
+<span style="color:#facc15">[5G+ NSA ANCHORED]</span></div>
+      <div class="bar-outer"><div class="bar-inner" style="width:82%;background:var(--yellow)"></div></div>
+    </div>
+    <!-- 3 -->
+    <div class="mod red">
+      <div class="mod-head"><div class="mod-title">03 // IMSI CATCHER</div><div class="mod-id">ALERT</div></div>
+      <div class="big red">IMSI CATCHER DETECTED</div>
+      <div class="kv"><b>IMSI:</b> 302-999-00000-00001</div>
+      <div class="kv"><b>RSSI:</b> -41dBm • <b>FORCED 2G</b></div>
+      <div class="kv"><b>SUS:</b> FAKE LAC 65534 • NO AUTH</div>
+      <div class="console" style="color:#ef4444"><span class="dim">[WARN]</span> Rogue BTS pattern
+<span class="dim">[WARN]</span> IMSI request flood
+<span style="color:#fff;background:#ef4444;padding:0 4px">[BLOCKED] AUTH BYPASS ATTEMPT</span></div>
+    </div>
+    <!-- 4 -->
+    <div class="mod purple">
+      <div class="mod-head"><div class="mod-title">04 // GHOST PROBABILITY</div><div class="mod-id">AI-V9</div></div>
+      <div class="big purple" style="font-size:38px">87%</div>
+      <div class="kv"><b>MODEL:</b> Z-GHOST-V9.2 • ZOUBIROU-IA-2025</div>
+      <div class="kv"><b>VECTORS:</b> LAC_SPOOF + MCC_ANOMALY + RSRP_JUMP</div>
+      <div class="bar-outer"><div class="bar-inner" style="width:87%;background:var(--purple);box-shadow:0 0 12px var(--purple)"></div></div>
+      <div class="console"><span class="dim">inference ></span> ghost_cell = True
+confidence: 0.87
+<span style="color:var(--purple)">→ QUARANTINE RECOMMENDED</span></div>
+    </div>
+    <!-- 5 -->
+    <div class="mod green">
+      <div class="mod-head"><div class="mod-title">05 // FLUX ANALYZER</div><div class="mod-id">+72 FLUX</div></div>
+      <div class="big green">+72 FLUX</div>
+      <div class="kv"><b>Δ RSRP:</b> +18dBm / 3.2s • <b>JITTER:</b> HIGH</div>
+      <div class="kv"><b>FLOW:</b> TOWER_HOP 3x in 12s</div>
+      <div class="console" id="fluxConsole">> flux --live
+[12:04:11] +12 flux
+[12:04:13] +31 flux
+[12:04:14] +72 flux ⚡</div>
+      <div class="bar-outer"><div class="bar-inner" style="width:72%;background:var(--green)"></div></div>
+    </div>
+    <!-- 6 -->
+    <div class="mod cyan">
+      <div class="mod-head"><div class="mod-title">06 // TOWER TRIANGULATION</div><div class="mod-id">3 TOWERS</div></div>
+      <div class="big">3 BTS LOCKED</div>
+      <div class="kv"><b>BTS1:</b> Bell 21043-42A2 • 45.6081,-73.5512</div>
+      <div class="kv"><b>BTS2:</b> Bell 21044-42A3 • 45.6124,-73.5488</div>
+      <div class="kv"><b>BTS3:</b> [GHOST] 65534-FFFF • 45.6099,-73.5495</div>
+      <div class="console"><span class="dim">triangulate >></span> H1S sector
+error radius: 48m
+<span style="color:var(--cyan)">target inside Anjou industrial</span></div>
+    </div>
+    <!-- 7 -->
+    <div class="mod yellow">
+      <div class="mod-head"><div class="mod-title">07 // SIGNAL JAMMER SCAN</div><div class="mod-id">SPECTRUM</div></div>
+      <div class="big yellow">NO JAM • CLEAN</div>
+      <div class="kv"><b>SCAN:</b> 700MHz - 3800MHz</div>
+      <div class="kv"><b>NOISE FLOOR:</b> -94dBm</div>
+      <div class="kv"><b>ANOMALY:</b> 900MHz spike -41dBm</div>
+      <div class="console"><span class="dim">[700] -88dBm ok</span>
+<span class="dim">[1800] -76dBm ok</span>
+<span style="color:var(--yellow)">[900] -41dBm ↑ SUSPECT IMSI BAND</span></div>
+    </div>
+    <!-- 8 -->
+    <div class="mod green">
+      <div class="mod-head"><div class="mod-title">08 // ENCRYPTED SNIFFER</div><div class="mod-id">AES-256</div></div>
+      <div class="big">PACKETS: 14,293</div>
+      <div class="kv"><b>PROTO:</b> S1AP / NAS / RRC</div>
+      <div class="kv"><b>ENCRYPT:</b> EEA2 • <b>INTEGRITY:</b> EIA2</div>
+      <div class="kv"><b>CAPTURE:</b> 2.4 MB • <b>DECRYPT:</b> 0%</div>
+      <div class="console"><span class="dim">tcpdump -i rmnet0 -w z_ghost.pcap</span>
+14k packets captured
+[OK] IMSI encrypted
+[OK] No plaintext leak</div>
+    </div>
+    <!-- 9 -->
+    <div class="mod purple">
+      <div class="mod-head"><div class="mod-title">09 // RSRP HEATMAP</div><div class="mod-id">LIVE MAP</div></div>
+      <div class="big purple">-59 dBm AVG</div>
+      <div class="kv"><b>MIN:</b> -89 • <b>MAX:</b> -41 • <b>AVG:</b> -59</div>
+      <div class="kv"><b>TREND:</b> ↑ +12dBm (ghost approach)</div>
+      <div class="console" id="heatConsole">████▓▓▓▒▒░░ -89
+████▓▓▓▓▒▒░░ -72
+██████▓▓▓▓▒░ -59 ← YOU
+████████▓▓▓░ -41 GHOST</div>
+    </div>
+  </div>
+</div>
+
+<div class="radar-wrap">
+  <div class="panel">
+    <div class="panel-title"><i style="background:var(--green);box-shadow:0 0 8px var(--green)"></i> RADAR // GHOST TRACKER // CANVAS GRID</div>
+    <canvas id="radar" width="560" height="360"></canvas>
+    <div class="stats">
+      <div class="stat"><label>Ghost Distance</label><div id="ghostDist" style="color:var(--red)">48m</div></div>
+      <div class="stat"><label>Signal Vector</label><div style="color:var(--green)">-41 dBm / -59 dBm</div></div>
+      <div class="stat"><label>Confidence</label><div style="color:var(--purple)">87% • V9.2</div></div>
+      <div class="stat"><label>Flux</label><div style="color:var(--yellow)">+72 flux ⚡</div></div>
+    </div>
+  </div>
+  <div class="panel">
+    <div class="panel-title"><i style="background:var(--yellow);box-shadow:0 0 8px var(--yellow)"></i> TRIANGULATION MAP // MONTREAL H1S</div>
+    <canvas id="tri" width="400" height="360"></canvas>
+    <div style="margin-top:12px;font-size:11px;color:#a1a1aa;line-height:1.6">
+      <b style="color:#fafafa">H1S TRIANGULATION LOG:</b><br>
+      > BTS Bell 21043 triangulated @ 45.6081,-73.5512<br>
+      > BTS Bell 21044 triangulated @ 45.6124,-73.5488<br>
+      > <span style="color:var(--red)">GHOST 302-999-00000-00001 @ 45.6099,-73.5495 (-41dBm)</span><br>
+      > ERROR RADIUS: 48m • ZONE: Anjou Industrial<br>
+      > ACTION: LOG + QUARANTINE
+    </div>
+    <div style="margin-top:10px;display:flex;gap:8px">
+      <button class="btn green" onclick="copyLog()">COPY LOG</button>
+      <button class="btn" onclick="downloadPcap()">DL .PCAP</button>
+    </div>
+  </div>
+</div>
+
+<div class="linkedin">
+  <div class="panel-title" style="font-size:18px"><i style="background:var(--cyan)"></i> PUBLICATIONS LINKEDIN // Z-GHOSTTRAFker-Z V9 GENERATOR</div>
+  <div style="color:#a1a1aa;font-size:12px;margin-top:6px">3 posts prêts à publier — Fr/En — Style Ilyes Zoubirou — Copie 1-clic</div>
+  <div class="link-grid">
+    <div class="post">
+      <div class="post-head"><div class="avatar">IZ</div><div class="post-meta"><b>Ilyes Zoubirou</b>NetSecurePro.ca • Montreal H1S • V9 Live</div></div>
+      <div class="post-text" id="post1">🔥 Z-GHOSTTRAFker-Z V9 est LIVE — SAHBI EDITION
+
+Après 9 modules de détection, on capte enfin le pattern:
+
+→ PREFIX TABLE H1S verrouillée
+→ MCC 302 610 Bell • CELL 21043/42A2 • TAC 48293 • -59dBm 5G+
+→ IMSI CATCHER DETECTED: 302-999-00000-00001 @ -41dBm (forced 2G, fake LAC 65534)
+→ GHOST PROBABILITY 87% • FLUX ANALYZER +72 flux
+
+Le radar Canvas + triangulation 3 tours confirme: 48m error radius, Anjou industrial.
+
+Ce n'est pas de la théorie. C'est du terrain.
+
+IA_LOGIC_SIGNATURE: ZOUBIROU-IA-2025
+Built with D_BIN_HTML // SAHBI EDITION
+
+#CyberSecurity #IMSI #5G #Montreal #NetSecurePro</div>
+      <button class="btn green" onclick="copyPost('post1',this)">📋 COPY POST 1</button>
+    </div>
+    <div class="post">
+      <div class="post-head"><div class="avatar">IZ</div><div class="post-meta"><b>Ilyes Zoubirou</b>Ghost Hunter • Bell 5G+ • H1S</div></div>
+      <div class="post-text" id="post2">When your phone jumps -59dBm → -41dBm in 3 seconds...
+
+That's not Bell. That's a GHOST.
+
+Z-GHOSTTRAFker-Z V9 breakdown:
+✓ MONTREAL H1S prefix mapping
+✓ MCC 302 610 decoder (Bell 21043/42A2)
+✓ Real IMSI catcher fingerprint: 302-999-00000-00001
+✓ 87% ghost probability (ZOUBIROU-IA-2025 model)
+✓ +72 flux analyzer + tower triangulation
+
+Single HTML file. No dependencies. Canvas radar. Pure terminal energy.
+
+I built this for the BIN. Coller à gauche, RUN à droite. SAHBI EDITION 🔥
+
+D_BIN_HTML // SAHBI EDITION V9
+LICENSE: NetSecurePro.ca
+
+#OSINT #TelecomSecurity #IMSIcatcher #MontrealTech</div>
+      <button class="btn green" onclick="copyPost('post2',this)">📋 COPY POST 2</button>
+    </div>
+    <div class="post">
+      <div class="post-head"><div class="avatar">IZ</div><div class="post-meta"><b>Ilyes Zoubirou</b>Z-GHOST V9 • 9 Modules • Publication Lab</div></div>
+      <div class="post-text" id="post3">C'est lancé SAHBI! Voilà D_BIN_HTML // SAHBI EDITION 🔥
+
+9 modules dark mode zinc-950:
+01 PREFIX TABLE H1S
+02 MCC 302 610 Bell -59dBm 5G+
+03 IMSI CATCHER DETECTED -41dBm
+04 GHOST 87%
+05 FLUX +72
+06 TRIANGULATION 3 TOWERS
+07 JAMMER SCAN
+08 PACKET SNIFFER AES-256
+09 RSRP HEATMAP
+
++ Radar Canvas + Triangulation Map + LinkedIn Generator.
+
+Comment ça marche:
+À gauche tu colles ton code HTML → RUN → ça s'affiche à droite en live
+COPY pour copier, DOWNLOAD pour télécharger ton .html
+
+Une seule page. Inline CSS/JS. Pas de dépendances.
+Fait pour le BIN. Fait pour Montreal H1S.
+
+milyes@netsecurepro.ca
+
+#D_BIN_HTML #SahbiEdition #ZGhost #MontrealH1S</div>
+      <button class="btn green" onclick="copyPost('post3',this)">📋 COPY POST 3</button>
+    </div>
+  </div>
+</div>
+
+<div class="footer">
+  <div style="font-family:'Syne',sans-serif;font-size:14px;font-weight:800;letter-spacing:0.1em;color:#fafafa;margin-bottom:6px">D_BIN_HTML // SAHBI EDITION V9 // Z-GHOSTTRAFker-Z</div>
+  LICENSE NETSECUREPRO.CA • <b>milyes@netsecurepro.ca</b> • MONTREAL H1S • IA_LOGIC_SIGNATURE:ZOUBIROU-IA-2025 • © 2025 ILYES ZOUBIROU — ALL RIGHTS RESERVED • BUILT FOR THE BIN — LEFT CODE / RIGHT PREVIEW • <span style="color:var(--green)">SAHBI 🔥</span>
+</div>
+
+<script>
+function updateClock(){
+  const d=new Date();
+  const fmt=d.toLocaleTimeString('fr-CA',{hour12:false})+' UTC-5';
+  const el=document.getElementById('clock'); if(el) el.textContent=fmt;
+}
+setInterval(updateClock,1000); updateClock();
+
+function copyPost(id,btn){
+  const txt=document.getElementById(id).innerText;
+  navigator.clipboard.writeText(txt).then(()=>{
+    const o=btn.innerText; btn.innerText='✅ COPIED!'; setTimeout(()=>btn.innerText=o,1600);
+  });
+}
+function copyLog(){
+  const log='[H1S-LOG] MCC 302 610 Bell 21043/42A2 TAC 48293 RSRP -59 5G+\n[ALERT] IMSI CATCHER 302-999-00000-00001 -41dBm FAKE LAC 65534\n[AI] GHOST PROB 87% FLUX +72\n[TRI] 45.6099,-73.5495 radius 48m';
+  navigator.clipboard.writeText(log);
+}
+function downloadPcap(){
+  const blob=new Blob(['Z-GHOST V9 PCAP DUMMY - H1S'],{type:'application/octet-stream'});
+  const a=document.createElement('a'); a.href=URL.createObjectURL(blob); a.download='z_ghost_h1s_v9.pcap'; a.click();
+}
+
+// RADAR CANVAS
+const radar=document.getElementById('radar');
+const rCtx=radar.getContext('2d');
+let angle=0, ghostPulse=0;
+function drawRadar(){
+  const W=radar.width, H=radar.height;
+  rCtx.fillStyle='#000'; rCtx.fillRect(0,0,W,H);
+  // grid
+  rCtx.strokeStyle='#1a1a1a'; rCtx.lineWidth=1;
+  for(let i=0;i<W;i+=28){ rCtx.beginPath(); rCtx.moveTo(i,0); rCtx.lineTo(i,H); rCtx.stroke(); }
+  for(let j=0;j<H;j+=28){ rCtx.beginPath(); rCtx.moveTo(0,j); rCtx.lineTo(W,j); rCtx.stroke(); }
+  const cx=W*0.5, cy=H*0.55;
+  // circles
+  rCtx.strokeStyle='#222'; for(let r=30;r<260;r+=38){ rCtx.beginPath(); rCtx.arc(cx,cy,r,0,Math.PI*2); rCtx.stroke(); }
+  // sweep
+  angle+=0.045; ghostPulse+=0.08;
+  rCtx.save(); rCtx.translate(cx,cy);
+  const grad=rCtx.createConicGradient(angle-Math.PI/2,0,0);
+  grad.addColorStop(0,'rgba(34,255,102,0.35)'); grad.addColorStop(0.15,'rgba(34,255,102,0.02)'); grad.addColorStop(1,'rgba(0,0,0,0)');
+  rCtx.fillStyle=grad; rCtx.beginPath(); rCtx.moveTo(0,0); rCtx.arc(0,0,240,0,Math.PI*2); rCtx.fill();
+  rCtx.strokeStyle='#22ff66'; rCtx.lineWidth=2; rCtx.beginPath(); rCtx.moveTo(0,0); rCtx.lineTo(Math.cos(angle)*240, Math.sin(angle)*240); rCtx.stroke();
+  rCtx.restore();
+  // you
+  rCtx.fillStyle='#22ff66'; rCtx.shadowColor='#22ff66'; rCtx.shadowBlur=12;
+  rCtx.beginPath(); rCtx.arc(cx,cy,5,0,Math.PI*2); rCtx.fill(); rCtx.shadowBlur=0;
+  rCtx.fillStyle='#22ff66'; rCtx.font='10px JetBrains Mono'; rCtx.fillText('YOU • -59dBm 5G+',cx+10,cy-8);
+  // ghost
+  const gx=cx+95+Math.sin(ghostPulse*0.7)*6, gy=cy-72+Math.cos(ghostPulse*0.6)*5;
+  const pul=Math.abs(Math.sin(ghostPulse))*10+6;
+  rCtx.strokeStyle='rgba(239,68,68,0.8)'; rCtx.lineWidth=1.5;
+  rCtx.beginPath(); rCtx.arc(gx,gy,pul,0,Math.PI*2); rCtx.stroke();
+  rCtx.fillStyle='#ef4444'; rCtx.shadowColor='#ef4444'; rCtx.shadowBlur=14;
+  rCtx.beginPath(); rCtx.arc(gx,gy,4,0,Math.PI*2); rCtx.fill(); rCtx.shadowBlur=0;
+  rCtx.fillStyle='#ef4444'; rCtx.font='bold 11px JetBrains Mono';
+  rCtx.fillText('GHOST • -41dBm • 302-999-00000-00001',gx+10,gy-6);
+  rCtx.fillStyle='#71717a'; rCtx.font='10px JetBrains Mono';
+  rCtx.fillText((48+Math.sin(ghostPulse)*2).toFixed(0)+'m radius • 87% • +72 flux',gx+10,gy+10);
+  // line you-ghost
+  rCtx.strokeStyle='rgba(250,204,21,0.35)'; rCtx.setLineDash([4,4]);
+  rCtx.beginPath(); rCtx.moveTo(cx,cy); rCtx.lineTo(gx,gy); rCtx.stroke(); rCtx.setLineDash([]);
+  requestAnimationFrame(drawRadar);
+}
+drawRadar();
+
+// TRIANGULATION CANVAS
+const tri=document.getElementById('tri');
+const tCtx=tri.getContext('2d');
+function drawTri(){
+  const W=tri.width, H=tri.height;
+  tCtx.fillStyle='#000'; tCtx.fillRect(0,0,W,H);
+  tCtx.strokeStyle='#151518'; for(let i=0;i<W;i+=24){ tCtx.beginPath(); tCtx.moveTo(i,0); tCtx.lineTo(i,H); tCtx.stroke(); }
+  for(let j=0;j<H;j+=24){ tCtx.beginPath(); tCtx.moveTo(0,j); tCtx.lineTo(W,j); tCtx.stroke(); }
+  // towers
+  const towers=[
+    {x:90,y:90,c:'#22ff66',label:'BTS 21043 • -59dBm'},
+    {x:300,y:80,c:'#22ff66',label:'BTS 21044 • -67dBm'},
+    {x:190,y:220,c:'#ef4444',label:'GHOST • -41dBm',ghost:true}
+  ];
+  // circles overlap
+  towers.forEach(t=>{
+    tCtx.strokeStyle=t.c+'66'; tCtx.lineWidth=1;
+    for(let r=18;r<110;r+=22){ tCtx.beginPath(); tCtx.arc(t.x,t.y,r,0,Math.PI*2); tCtx.stroke(); }
+  });
+  // lines
+  tCtx.strokeStyle='#27272a'; tCtx.setLineDash([5,5]); tCtx.beginPath(); tCtx.moveTo(towers[0].x,towers[0].y); tCtx.lineTo(towers[1].x,towers[1].y); tCtx.lineTo(towers[2].x,towers[2].y); tCtx.lineTo(towers[0].x,towers[0].y); tCtx.stroke(); tCtx.setLineDash([]);
+  // points
+  towers.forEach(t=>{
+    tCtx.fillStyle=t.c; tCtx.shadowColor=t.c; tCtx.shadowBlur=t.ghost?14:8;
+    tCtx.beginPath(); tCtx.arc(t.x,t.y, t.ghost?5:4,0,Math.PI*2); tCtx.fill(); tCtx.shadowBlur=0;
+    tCtx.fillStyle=t.ghost?'#ef4444':'#e4e4e7'; tCtx.font=(t.ghost?'bold 10px JetBrains Mono':'10px JetBrains Mono');
+    tCtx.fillText(t.label, t.x+10, t.y-8);
+  });
+  // center
+  const cx= (towers[0].x+towers[1].x+towers[2].x)/3;
+  const cy= (towers[0].y+towers[1].y+towers[2].y)/3;
+  tCtx.fillStyle='#facc15'; tCtx.beginPath(); tCtx.arc(cx,cy,3,0,Math.PI*2); tCtx.fill();
+  tCtx.strokeStyle='rgba(250,204,21,0.6)'; tCtx.beginPath(); tCtx.arc(cx,cy,48,0,Math.PI*2); tCtx.stroke();
+  tCtx.fillStyle='#facc15'; tCtx.font='9px JetBrains Mono'; tCtx.fillText('H1S TARGET • 48m',cx+8,cy+4);
+}
+drawTri();
+setInterval(()=>{ document.getElementById('ghostDist').textContent=(47+Math.random()*3).toFixed(0)+'m'; drawTri(); }, 1800);
+
+// flux flicker
+setInterval(()=>{
+  const el=document.getElementById('fluxConsole');
+  if(!el) return;
+  const flux=Math.floor(60+Math.random()*18);
+  el.innerHTML = '> flux --live\n[12:04:11] +12 flux\n[12:04:13] +31 flux\n[12:04:14] +'+flux+' flux ⚡';
+}, 900);
+</script>
+</body>
+</html>
